@@ -2025,6 +2025,9 @@ Future<Void> tLogPeekMessages(PromiseType replyPromise,
 	reply.messages = messagesValue;
 	reply.end = endVersion;
 	reply.onlySpilled = onlySpilled;
+	if (reqTag.locality == tagLocalityTxs) {
+		reply.popped = poppedVer;
+        }
 
 	DebugLogTraceEvent("TLogPeekMessages4", self->dbgid)
 	    .detail("LogId", logData->logId)
